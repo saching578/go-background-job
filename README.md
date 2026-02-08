@@ -54,34 +54,11 @@ Worker Service (Go)
 v
 SQLite Database
 
-## 📁 Project Structure
-
-background-job/
-├── api/
-│ ├── handler/
-│ │ └── job_handler.go # HTTP handlers
-│ ├── kafka/
-│ │ └── producer.go # Kafka producer
-│ ├── repository/
-│ │ └── job_repo.go # DB access layer
-│ └── main.go # API entry point
-│
-├── worker/
-│ └── main.go # Kafka consumer & job processing
-│
-├── db/
-│ └── jobs.db # SQLite DB (auto-created)
-│
-├── docker-compose.yml # Kafka + Zookeeper
-├── go.mod
-├── go.sum
-└── README.md
-
 ## 🔁 Job Lifecycle
 
 PENDING → RUNNING → DONE
-                ↘
-                 FAILED (after max retries)
+↘
+FAILED (after max retries)
 
    - Failed jobs are retried automatically
 
@@ -105,8 +82,8 @@ Make sure the following are installed:
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/saching578/go-background-job.git
+cd go-background-job
 
 2️⃣ Start Kafka & Zookeeper
 
