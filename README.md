@@ -135,7 +135,6 @@ Invoke-RestMethod `
 Response:
 
 job_id status
------- ------
 1      PENDING
 
 6️⃣ Observe Worker Logs
