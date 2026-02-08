@@ -35,45 +35,44 @@ This project implements a **production-style asynchronous background job process
 ## 🏗 System Architecture
 
 Client
-  |
-  | POST /jobs
-  v
+|
+| POST /jobs
+v
 API Service (Go)
-  |
-  | Store job in DB
-  | Publish job_id to Kafka
-  v
+|
+| Store job in SQLite DB
+| Publish job_id to Kafka
+v
 Kafka (job-events topic)
-  |
-  v
+|
+v
 Worker Service (Go)
-  |
-  | Execute job
-  | Retry on failure
-  | Update job status
-  v
+|
+| Execute job
+| Retry on failure
+| Update job status
+v
 SQLite Database
-
 
 ## 📁 Project Structure
 
 background-job/
 ├── api/
-│   ├── handler/
-│   │   └── job_handler.go      # HTTP handlers
-│   ├── kafka/
-│   │   └── producer.go         # Kafka producer
-│   ├── repository/
-│   │   └── job_repo.go         # DB access layer
-│   └── main.go                 # API entry point
+│ ├── handler/
+│ │ └── job_handler.go # HTTP handlers
+│ ├── kafka/
+│ │ └── producer.go # Kafka producer
+│ ├── repository/
+│ │ └── job_repo.go # DB access layer
+│ └── main.go # API entry point
 │
 ├── worker/
-│   └── main.go                 # Kafka consumer & job processing
+│ └── main.go # Kafka consumer & job processing
 │
 ├── db/
-│   └── jobs.db                 # SQLite DB (auto-created)
+│ └── jobs.db # SQLite DB (auto-created)
 │
-├── docker-compose.yml          # Kafka + Zookeeper
+├── docker-compose.yml # Kafka + Zookeeper
 ├── go.mod
 ├── go.sum
 └── README.md
