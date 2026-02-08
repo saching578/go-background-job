@@ -56,9 +56,9 @@ SQLite Database
 
 ## 🔁 Job Lifecycle
 
-PENDING → RUNNING → DONE
-↘
-FAILED (after max retries)
+PENDING -> RUNNING -> DONE
+
+-> FAILED (after max retries)
 
    - Failed jobs are retried automatically
 
